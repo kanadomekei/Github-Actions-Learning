@@ -37,6 +37,7 @@ jobs:
 
   # This workflow contains a second job called "test"
   test:
+    needs: build  # This job depends on the "build" job
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
@@ -45,3 +46,15 @@ jobs:
       # Runs a single command using the runners shell
       - name: Run a test script
         run: echo Running tests!
+
+  # This workflow contains a third job called "deploy"
+  deploy:
+    needs: test  # This job depends on the "test" job
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Runs a single command using the runners shell
+      - name: Run a deploy script
+        run: echo Deploying application!
