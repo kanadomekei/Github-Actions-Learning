@@ -1,22 +1,15 @@
-name: CI/CD
-
-on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
-  workflow_dispatch:
-
 jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-        run: echo "Running linter"
+      - name: Run linter
+        run: echo "Running linter (dummy)"
 
   test:
     needs: lint
     runs-on: ubuntu-latest
     steps:
+      - name: Run tests
         run: echo "Running tests (dummy)"
 
   build:
@@ -24,12 +17,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Build project
-        run: echo "Building project"
+        run: echo "Building project (dummy)"
 
   deploy:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
       - name: Deploy to production
-        run: echo "Deploying to production"
+        run: echo "Deploying to production (dummy)"
