@@ -1,3 +1,5 @@
+name: Main Workflow
+
 on:
   push:
     branches: [ main ]
@@ -6,28 +8,16 @@ on:
 
 jobs:
   lint:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Run linter
-        run: echo "Running linter (dummy)"
+    uses: ./.github/workflows/lint.yml
 
   test:
     needs: lint
-    runs-on: ubuntu-latest
-    steps:
-      - name: Run tests
-        run: echo "Running tests (dummy)"
+    uses: ./.github/workflows/test.yml
 
   build:
     needs: test
-    runs-on: ubuntu-latest
-    steps:
-      - name: Build project
-        run: echo "Building project (dummy)"
+    uses: ./.github/workflows/build.yml
 
   deploy:
     needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Deploy to production
-        run: echo "Deploying to production (dummy)"
+    uses: ./.github/workflows/deploy.yml
